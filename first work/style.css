@@ -49,28 +49,22 @@ header {
     height: 300px;
     background-color: grey;
     margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.left {
-    height: 260px;
-    width: 420px;
     
 }
 
 
 
+
+
 .computer {
     position: relative;
-    left: 25px;
     top: 25px;
     height: 100px;
     width: 100px;
     background-image: url(img/comp.jpg);
     background-size: cover;
     background-position: center;
-    display: block;
+    display: inline-block;
 
 }
 
