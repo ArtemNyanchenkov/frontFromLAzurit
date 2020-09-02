@@ -57,10 +57,10 @@ header {
 
 
 .computer {
-    position: relative;
-    top: 25px;
-    height: 100px;
-    width: 100px;
+    position: absolute;
+    
+    height: 50px;
+    width: 50px;
     background-image: url(img/comp.jpg);
     background-size: cover;
     background-position: center;
