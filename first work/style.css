@@ -79,4 +79,5 @@ header {
 
 .computer:hover .drop {
    display: block;
+   z-index: 10000;
 }
