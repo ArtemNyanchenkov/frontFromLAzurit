@@ -46,9 +46,10 @@ header {
 
 
 .line {
-    height: 300px;
+    
     background-color: grey;
     margin-top: 10px;
+    
     
 }
 
@@ -57,14 +58,13 @@ header {
 
 
 .computer {
-    position: absolute;
     
     height: 50px;
     width: 50px;
     background-image: url(img/comp.jpg);
     background-size: cover;
     background-position: center;
-    display: inline-block;
+    
 
 }
 
