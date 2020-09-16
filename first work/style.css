@@ -1,5 +1,5 @@
 .center {
-    padding: 0 10vw;
+    padding: 0 calc(50% - 570px);
   }
 
 header {
@@ -60,8 +60,8 @@ header {
 .computer {
     display: inline-block;
     position: relative;
-    height: 10vmin;
-    width: 10vmin;
+    height: 50px;
+    width: 50px;
     background-image: url(img/comp.jpg);
     background-size: cover;
     background-position: center;
