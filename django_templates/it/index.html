@@ -1,0 +1,9 @@
+{% extends "it/base.html" %}
+{% block navbar %}
+    <ul class="nav navbar-nav">
+        {% for item in applications %}
+        <li><a href="{{ item.url }}">{{ item.description }}</a></li>
+        {% endfor %}
+        {% include 'administrate/login.html' %}
+    </ul>
+{% endblock %}

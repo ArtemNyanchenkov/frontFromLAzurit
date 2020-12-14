@@ -1,0 +1,42 @@
+{% extends "it/base.html" %}
+{% load i18n grp_tags static %}
+{% block breadcrumbs %}{% endblock %}
+{% block app_menu %}
+    {% block navbar %}{% endblock %}
+    {% block appendance %}{% endblock %}
+{% endblock %}
+{% block content%}
+{{ pc.x_coord_in_percent }}
+    <div class="plan center" style="margin: 0 {{ room.margin_x }}vw">
+        <div class="nameplan"><h1>{{ room.name }} {{ room.description }}</h1></div>
+        <div class="line first" >
+        {% for pc in pcs %}
+                <div class="computer"
+                     style="left: {{ pc.x_coord_in_percent }}vw;
+                     margin-top: {{ pc.y_coord_in_percent }}vh;
+                     height: {{ pc.dim_y_in_percent }}vh;
+                     width: {{ pc.dim_x_in_percent }}vw;"
+                >
+                    <div class="drop" style="left: 10px; ">
+                        <p>Компьютер: <span>{{ pc.name }}</span> </p>
+                        <p>Пользователь: <span>{{ pc.user.first_name }} {{ pc.user.last_name }}</span> </p>
+                        <p>Конфигурация: <span>{{ pc.configuration }}</span></p>
+                        <p>Инв.№: <span>{{ pc.inventory_number }}</span></p>
+    <!--                    <form action="">
+                            <p>USER</p>
+                            <input type="text" >
+                            <p>Инв. номер компьютера</p>
+                            <input type="text"> -->
+                            <button class="center" style="width: 80px;">
+                                <a target="_blank" href="/admin/it/pc/{{ pc.id }}/change/">
+                                    Изменить
+                                </a>
+                            </button>
+    <!--                    </form>  -->
+                    </div>
+                </div>
+        {% endfor %}
+            <div style="margin-top: {{ room.dim_y_in_percent }}vh;"></div>
+        </div>
+    </div>
+{% endblock %}

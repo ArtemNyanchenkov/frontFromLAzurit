@@ -1,0 +1,15 @@
+{% extends 'administrate/admin_page.html' %}
+{% block content %}
+    <div class="pfblock-subtitle col-sm-8">
+        <h2 class="col-sm-offset-3">{{ model.model_name_plural }}</h2>
+        <ul id="items" class="col-sm-offset-2 col-sm-10 list__item">
+            {% include 'administrate/inc-items_list.html' %}
+        </ul>
+    </div>
+    <form id="item_form" class="table-responsive col-ofset-sm-2 col-sm-6" action="">
+        {% include 'administrate/inc-item_form.html' %}
+        <span id="model-action" class="btn btn-default" onclick="send_data()">
+            Создать
+        </span>
+    </form>
+{% endblock %}

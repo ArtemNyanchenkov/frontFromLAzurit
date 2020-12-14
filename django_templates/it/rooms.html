@@ -1,0 +1,16 @@
+{% extends "it/base.html" %}
+{% load i18n grp_tags static %}
+{% block breadcrumbs %}{% endblock %}
+{% block app_menu %}
+    {% block navbar %}{% endblock %}
+    {% block appendance %}{% endblock %}
+{% endblock %}
+{% block content%}
+    <ul>
+        {% for room in rooms %}
+            <li><a href="{{ room.id }}/">
+                {{room.name }}<br>{{ room.description }}
+            </a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

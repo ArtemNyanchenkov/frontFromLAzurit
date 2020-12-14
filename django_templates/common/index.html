@@ -1,0 +1,13 @@
+{% extends "common/base.html" %}
+{% block navbar %}
+    <ul class="nav navbar-nav">
+        {% for item in applications %}
+            {% if user.is_authenticated and item.authorization is None or item.authorization in user_groups %}
+                <li><a href="{{ item.app_name }}/">{{ item.app_title }}</a></li>
+            {% else %}
+                <li><a href="{{ item.app_name }}/" style="pointer-events: none;">{{ item.app_title }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% include 'administrate/login.html' %}
+    </ul>
+{% endblock %}

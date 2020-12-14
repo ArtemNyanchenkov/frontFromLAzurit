@@ -1,0 +1,19 @@
+{% load i18n grp_tags %}
+<ul class="col-sm-7">
+{% for item in detail_list1 %}
+    <li class="{% cycle 'background1' 'background2' as background %} col-sm-2 list__item">
+        {{ item.attr|capfirst }}:
+    </li>
+    <li class="{{ background }} col-sm-10 list__item">
+        {{ item.value }}
+    </li>
+{% endfor %}
+</ul>
+<ul class="col-sm-5">
+{% for item in detail_list2 %}
+    <li class="{% cycle 'background1' 'background2' as background %} col-sm-5 list__item">
+        {{ item.attr|capfirst }}:
+    </li>
+    <li class="{{ background }} col-sm-7 list__item"> {{ item.value }} </li>
+{% endfor %}
+</ul>

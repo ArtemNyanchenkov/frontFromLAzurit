@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+		{{ title }}
+        {% endblock %}
+    </title>
+    {% block css %}
+		{% include 'main_app/inc_css.html' %}
+    {% endblock %}
+    {% block js %}
+		{% include 'main_app/inc_js.html' %}
+    {% endblock %}
+    <meta charset="utf-8">
+</head>
+<body>
+	<body>
+	<header id="top" class="header">
+		<div class="container col-sm-10">
+			<div id="contetnt" class="bs-docs-header" tabindex="-1">
+				<div class="container">
+					<h1>Администрирование сайта</h1>
+				</div>
+			</div>
+			<div class="navbar-header">
+				<button aria-controls="bs-navbar" aria-expanded="false" class="collapsed navbar-toggle"
+						data-target="#bs-navbar" data-toggle="collapse" type="button">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">
+					<img src="{% static 'images/dentideal.gif' %}" height="50px">
+				</a>
+			</div>
+			<div id="bs-navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav col-sm-9">
+					{% for model in models %}
+					<li><a href="/administrate/{{model.class_name}}/">{{model.model_name_plural}}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</header>
+	{% block content%}
+	{% endblock %}
+	</body>
+</html>

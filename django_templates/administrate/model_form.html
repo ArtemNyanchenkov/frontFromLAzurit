@@ -1,0 +1,36 @@
+    {% csrf_token %}
+    {% if form_list %}
+        <span class="hidden" id="item_id">{{ item_id }}</span>
+        <button id="clear-button-{{ item_id }}" type="button" class="close-emp" aria-label="Close"
+                onclick=""
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <table class="col-sm-12">
+            <tr>
+            {% for form in form_list %}
+                <td class="col-sm-6">
+                    <table class="table">
+                    {% for field in form %}
+                        <tr>
+                            <td class="{% cycle 'background1' 'background2' as backround1 %}" >
+                                {{ field.label_tag }}
+                            </td>
+                            <td class="{% cycle 'background3' 'background4' as backround2 %}" >
+                                <div>
+                                    <ul>
+                                    {% for error in field.errors %}
+                                        <li class="error">errors:{{ error }}</li>
+                                    {% endfor %}
+                                    {{ field }}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </td>
+            {% endfor %}
+            </tr>
+        </table>
+    {% endif %}

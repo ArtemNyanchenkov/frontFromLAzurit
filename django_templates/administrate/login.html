@@ -1,0 +1,60 @@
+{% load i18n grp_tags static %}
+{% if not user.is_authenticated and not domain_user %}
+    <li onclick="(function(){$('.login-form').toggleClass('hide', 'show'); })()">
+        <a class="hover-hand" >
+            <span class="icon-user"></span>
+            Войти
+        </a>
+    </li>
+    <div class="col-sm-3 login-form {% if not errors %}hide {% endif %}">
+        {% if errors %}
+            <p class="text-danger">Сожалеем, вы неправильно ввели логин или пароль</p>
+        {% endif %}
+            <form class="navbar-form navbar-left"
+                  method="post" action="/login/">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="username" value="{{ username }}" placeholder="Логин">
+                    <input type="password" name="password" value="" placeholder="Пароль">
+                </div>
+                <button type="submit" class="btn btn-default">Войти</button>
+                <a href="/registration/">Регистрация</a>
+            </form>
+    </div>
+{% else %}
+    {% if user.is_superuser and user.is_staff and user.is_active  or 'IT_members' in user.ad_groups %}
+    <li>
+        <a
+            {% if app_label %}
+                href="{% url 'admin:app_list' app_label %}"
+            {% else %}
+                href="{% url 'admin:index' %}"
+            {% endif %}
+        > {% trans 'Administration' %}</a>
+    </li>
+    {% endif %}
+    <li>
+        <p style="padding-left: 20px; color: #9911FF;">Приветствую,</p>
+        <p style="padding-left: 20px; color: #9911FF;">
+            {% if user.first_name or user.last_name %}
+                {{ user.first_name }} {{ user.last_name }}
+            {% else %}
+                {{ user.username|title }}
+            {% endif %}
+        </p>
+ <!--
+        <a class="hover-hand" style="color: #99CCFF;" onclick="fill_form({{ user.id }})">
+            {% if user.first_name or user.last_name %}
+                {{ user.first_name }} {{ user.last_name }}
+            {% else %}
+                {{ user.username|title }}
+            {% endif %}
+        </a>
+-->
+<!--        {% if not domain_user %}
+            <a class="logout" href="/logout/">Выйти</a>
+        {% endif %}
+-->
+    </li>
+{% endif %}
+

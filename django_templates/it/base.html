@@ -1,0 +1,12 @@
+{% extends "common/base.html" %}
+{% load i18n grp_tags static %}
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/it_style.css' %}"/>
+{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+{% block app_menu %}
+    {% block navbar %}{% endblock %}
+    {% block appendance %}{% endblock %}
+{% endblock %}
+{% block content%}{% endblock %}
